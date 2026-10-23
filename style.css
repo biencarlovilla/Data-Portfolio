@@ -431,3 +431,204 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* About page additional sections */
+.about-section {
+    padding: 60px 8%;
+    border-top: 1px solid #eeeeee;
+}
+
+.about-section h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.about-section-content {
+    min-height: 100px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 50px 6%;
+    }
+
+    .about-section h2 {
+        font-size: 26px;
+    }
+}
+
+
+/* Professional Experience */
+.experience-item {
+    border-left: 2px solid #dddddd;
+    padding: 0 0 35px 25px;
+    margin-left: 5px;
+    position: relative;
+}
+
+.experience-item::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: #000000;
+    border-radius: 50%;
+}
+
+.experience-item h3 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.experience-role {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.experience-date {
+    font-size: 14px;
+    color: #777777;
+    margin-bottom: 15px;
+}
+
+.experience-item > p:last-child {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555555;
+    max-width: 750px;
+}
+
+.experience-item:last-child {
+    padding-bottom: 0;
+}
+
+
+/* Education & Certifications Gallery */
+.education-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.education-card,
+.award-card {
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 18px;
+    min-width: 0;
+}
+
+.education-image {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 18px;
+}
+
+.education-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+}
+
+.education-placeholder span {
+    font-size: 32px;
+    font-weight: bold;
+    color: #777777;
+}
+
+.education-info h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.education-info p {
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.education-info a,
+.award-card a {
+    font-size: 14px;
+    color: #000000;
+    text-decoration: underline;
+}
+
+.education-status {
+    display: inline-block;
+    font-size: 13px;
+    color: #555555;
+    background-color: #eeeeee;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+/* WGU Excellence Awards */
+.awards-description {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 30px;
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.award-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.award-card h3 {
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.education-card:hover,
+.award-card:hover {
+    border-color: #999999;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .education-grid,
+    .awards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .education-grid,
+    .awards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .education-image {
+        height: 190px;
+    }
+
+    .award-card img {
+        height: 210px;
+    }
+}
