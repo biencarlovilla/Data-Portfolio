@@ -1,0 +1,302 @@
+
+/* General styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Navigation bar */
+header {
+    background-color: #000000;
+    padding: 20px 8%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #bbbbbb;
+}
+
+
+/* Hero section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 100px 8%;
+    min-height: 80vh;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-greeting {
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 56px;
+    margin-bottom: 12px;
+}
+
+.hero h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.hero-description {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #555555;
+    max-width: 550px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 14px 24px;
+    text-decoration: none;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.btn-primary:hover {
+    background-color: #333333;
+}
+
+.btn-secondary:hover {
+    background-color: #eeeeee;
+}
+
+/* Professional headshot */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 400px;
+    height: 450px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 8px;
+}
+
+
+/* Tablet and mobile devices */
+@media (max-width: 768px) {
+
+    /* Navigation */
+    
+    header {
+        padding: 18px 5%;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    /* Hero */
+    .hero {
+        flex-direction: column-reverse;
+        padding: 50px 6%;
+        gap: 35px;
+        min-height: auto;
+        text-align: center;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero h2 {
+        font-size: 22px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+        margin: 0 auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-image {
+        width: 100%;
+    }
+
+    .hero-image img {
+        max-width: 300px;
+        height: 350px;
+    }
+}
+
+/* Smaller phones */
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero h2 {
+        font-size: 20px;
+    }
+
+    .hero-image img {
+        max-width: 260px;
+        height: 300px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* About Me page */
+.about-page {
+    padding: 90px 8%;
+    min-height: 80vh;
+}
+
+.about-page-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.about-label {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #777777;
+    margin-bottom: 15px;
+}
+
+.about-page h1 {
+    font-size: 48px;
+    margin-bottom: 45px;
+}
+
+.about-letter h2 {
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+
+.about-letter p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #444444;
+    margin-bottom: 22px;
+}
+
+.about-signature {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid #dddddd;
+}
+
+.about-signature strong {
+    font-size: 18px;
+}
+
+.about-signature span {
+    font-size: 14px;
+    color: #777777;
+}
+
+/* About page on mobile */
+@media (max-width: 768px) {
+    .about-page {
+        padding: 60px 6%;
+    }
+
+    .about-page h1 {
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+
+    .about-letter h2 {
+        font-size: 23px;
+    }
+
+    .about-letter p {
+        font-size: 16px;
+    }
+}
