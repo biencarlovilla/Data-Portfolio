@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Sales Analysis | Biencarlo Villa</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .case-study {
+            background: #101827;
+            color: #f1f5f9;
+            padding: 55px 7% 90px;
+        }
+
+        .case-container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #93c5fd;
+            text-decoration: none;
+            margin-bottom: 40px;
+        }
+
+        .case-eyebrow {
+            color: #93c5fd;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .case-study h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            margin: 15px 0;
+        }
+
+        .case-lead, .case-section > p {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .case-tags {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .case-tags span {
+            background: #23334a;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 30px 0 55px;
+        }
+
+        .case-metrics div {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 9px;
+        }
+
+        .case-metrics strong {
+            display: block;
+            font-size: 25px;
+        }
+
+        .case-metrics small {
+            color: #94a3b8;
+        }
+
+        .case-section {
+            margin: 48px 0;
+        }
+
+        .case-section h2 {
+            font-size: 30px;
+            margin-bottom: 22px;
+        }
+
+        .sql-accordion {
+            border: 1px solid #334155;
+            border-radius: 10px;
+            margin: 12px 0;
+            overflow: hidden;
+            background: #1e293b;
+        }
+
+        .sql-accordion summary {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 23px;
+            list-style: none;
+        }
+
+        .sql-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .sql-accordion summary strong {
+            display: block;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .sql-accordion summary small {
+            display: block;
+            color: #94a3b8;
+            margin-top: 9px;
+        }
+
+        .chevron {
+            color: #cbd5e1;
+            font-size: 24px;
+        }
+
+        .sql-accordion[open] .chevron {
+            transform: rotate(180deg);
+        }
+
+        .sql-detail {
+            background: #111b2b;
+            border-top: 1px solid #334155;
+            padding: 24px;
+        }
+
+        .code-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+
+        .copy-sql {
+            background: #26364c;
+            color: #e2e8f0;
+            border: 1px solid #475569;
+            padding: 7px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .sql-detail pre {
+            background: #080f1d;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            color: #bae6fd;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .sql-detail h3 {
+            color: #93c5fd;
+            font-size: 14px;
+            margin: 24px 0 12px;
+        }
+
+        .output-scroll {
+            overflow-x: auto;
+        }
+
+        .output-scroll table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .output-scroll th,
+        .output-scroll td {
+            padding: 11px 14px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+            white-space: nowrap;
+        }
+
+        .output-scroll th {
+            color: #93c5fd;
+        }
+
+        .output-note {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .sql-detail p {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .github-case-link {
+            display: inline-block;
+            padding: 15px 22px;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 750px) {
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .case-study {
+                padding: 40px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">BV.</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="case-study">
+        <div class="case-container">
+
+            <a href="projects.html" class="back-link">
+                ← Back to Projects
+            </a>
+
+            <p class="case-eyebrow">PROJECT 01 / POSTGRESQL</p>
+
+            <h1>Retail Sales Analysis</h1>
+
+            <p class="case-lead">
+                From raw retail transactions to business insights
+                using PostgreSQL. Explore the SQL queries, actual
+                outputs, and findings from the analysis.
+            </p>
+
+            <div class="case-tags">
+                <span>PostgreSQL</span>
+                <span>SQL</span>
+                <span>Data Cleaning</span>
+                <span>Business Analysis</span>
+            </div>
+
+            <div class="case-metrics">
+                <div>
+                    <strong>541,909</strong>
+                    <small>Raw Records</small>
+                </div>
+                <div>
+                    <strong>530,100</strong>
+                    <small>Positive Sales Rows</small>
+                </div>
+                <div>
+                    <strong>£10.67M</strong>
+                    <small>Positive Sales</small>
+                </div>
+                <div>
+                    <strong>£534.40</strong>
+                    <small>Average Order Value</small>
+                </div>
+            </div>
+
+            <section class="case-section">
+                <h2>Project Overview</h2>
+                <p>
+                    This project analyzes retail transaction data
+                    from a UK-based online retailer. I used PostgreSQL
+                    to prepare the dataset, calculate sales metrics,
+                    and identify patterns in products, customers,
+                    and geographic markets.
+                </p>
+            </section>
+
+            <section class="case-section">
+                <h2>SQL Code Walkthrough</h2>
+                <p>
+                    Explore the actual queries used to prepare and
+                    analyze the dataset. Click a section to view
+                    the SQL code, output, and explanation.
+                </p>
+
+                <div id="sql-walkthrough"></div>
+            </section>
+
+            <section class="case-section">
+                <h2>Business Insights</h2>
+                <p>
+                    November 2011 generated the highest monthly
+                    positive sales. The United Kingdom was the
+                    largest market, contributing approximately
+                    84.6% of positive sales.
+                </p>
+                <p>
+                    Product rankings also showed why shipping
+                    and adjustment entries should be distinguished
+                    from merchandise.
+                </p>
+            </section>
+
+            <section class="case-section">
+                <h2>Project Limitations</h2>
+                <p>
+                    The analysis focuses on positive transactions,
+                    not net revenue or profit. December 2011 is
+                    incomplete, and some transactions have missing
+                    customer IDs. Product classification remains
+                    preliminary.
+                </p>
+                <p>
+                    Dataset:
+                    <a href="https://archive.ics.uci.edu/dataset/352/online+retail"
+                       target="_blank" rel="noopener noreferrer"
+                       style="color:#93c5fd">
+                        UCI Online Retail
+                    </a>
+                </p>
+            </section>
+
+            <a class="github-case-link"
+               href="https://github.com/biencarlovilla/retail-sales-analysis"
+               target="_blank" rel="noopener noreferrer">
+                View Full GitHub Repository ↗
+            </a>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> Biencarlo Villa</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="project1.js"></script>
+</body>
+</html>

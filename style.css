@@ -730,3 +730,18 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+
+/* Project detail link */
+.project-open {
+    display: inline-block;
+    margin-top: 15px;
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 3px;
+}
+
+.project-open:hover {
+    color: #0f172a;
+}
