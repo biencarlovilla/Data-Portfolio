@@ -1,0 +1,694 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tableau Superstore Sales Analysis | Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Main project page */
+        .case-study {
+            background: #101827;
+            color: #f1f5f9;
+            padding: 55px 7% 90px;
+        }
+
+        .case-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            color: #93c5fd;
+            text-decoration: none;
+        }
+
+        .case-eyebrow {
+            color: #93c5fd;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-top: 40px;
+        }
+
+        .case-study h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            margin: 15px 0;
+        }
+
+        .case-lead,
+        .case-section p {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        /* Technology tags */
+        .case-tags {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .case-tags span {
+            background: #23334a;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        /* KPI cards */
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 30px 0 55px;
+        }
+
+        .case-metrics div {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 9px;
+        }
+
+        .case-metrics strong {
+            display: block;
+            font-size: 25px;
+        }
+
+        .case-metrics small {
+            color: #94a3b8;
+        }
+
+        /* General sections */
+        .case-section {
+            margin: 48px 0;
+        }
+
+        .case-section h2 {
+            font-size: 30px;
+            margin-bottom: 22px;
+        }
+
+        .case-section h3 {
+            margin: 24px 0 12px;
+        }
+
+        .case-section li {
+            margin: 12px 0;
+            line-height: 1.7;
+            color: #cbd5e1;
+        }
+
+       /* Interactive Tableau Dashboard */
+        .dashboard-frame {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .dashboard-frame tableau-viz {
+            display: block;
+            width: 100%;
+            height: 900px;
+        }
+
+        /* Project buttons */
+        .project-link {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            margin: 16px 10px 10px 0;
+        }
+
+        .project-link.secondary {
+            background: #23334a;
+        }
+
+        .project-link:hover {
+            opacity: 0.9;
+        }
+
+        /* Tableau calculated fields */
+        .formula {
+            background: #0b1220;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            color: #93c5fd;
+            line-height: 1.6;
+        }
+
+        /* Development dropdowns */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 25px;
+        }
+
+        .process-steps details {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .process-steps details[open] {
+            border-color: #3b82f6;
+        }
+
+        .process-steps summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .process-steps summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .step-title {
+            display: block;
+            font-size: 22px;
+            font-weight: 500;
+            color: #f1f5f9;
+        }
+
+        .step-description {
+            display: block;
+            margin-top: 8px;
+            font-size: 15px;
+            color: #94a3b8;
+        }
+
+        .step-arrow {
+            color: #cbd5e1;
+            font-size: 24px;
+            transition: transform 0.2s ease;
+        }
+
+        .process-steps details[open] .step-arrow {
+            transform: rotate(180deg);
+        }
+
+        .step-content {
+            padding: 0 24px 24px;
+        }
+
+        .step-content img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 16px;
+        }
+
+        .step-content p {
+            margin: 12px 0;
+        }
+
+        /* Mobile layout */
+        @media (max-width: 700px) {
+            .case-study {
+                padding: 35px 5% 65px;
+            }
+
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .case-metrics strong {
+                font-size: 20px;
+            }
+
+            .step-title {
+                font-size: 18px;
+            }
+
+            .step-description {
+                font-size: 13px;
+            }
+
+            .process-steps summary {
+                padding: 18px;
+            }
+
+            .step-content {
+                padding: 0 18px 18px;
+            }
+
+            .dashboard-frame {
+                padding: 5px;
+            }
+
+            .dashboard-frame tableau-viz {
+                height: 650px;
+            }
+        }
+    </style>
+
+    <!-- Tableau Embedding API -->
+    <script
+        type="module"
+        src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">BV.</a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="case-study">
+        <div class="case-container">
+
+            <a href="projects.html" class="back-link">
+                ← Back to Projects
+            </a>
+
+            <p class="case-eyebrow">PROJECT 04 / TABLEAU</p>
+
+            <h1>Superstore Sales Performance Dashboard</h1>
+
+            <p class="case-lead">
+                An interactive Tableau dashboard analyzing retail
+                sales, profitability, product performance, and
+                geographic trends using the Sample Superstore dataset.
+            </p>
+
+            <!-- Tools -->
+            <div class="case-tags">
+                <span>Tableau Desktop</span>
+                <span>Tableau Public</span>
+                <span>Data Visualization</span>
+                <span>Business Intelligence</span>
+                <span>Calculated Fields</span>
+            </div>
+
+            <!-- KPI Summary -->
+            <div class="case-metrics">
+                <div>
+                    <strong>$2.30M</strong>
+                    <small>Total Sales</small>
+                </div>
+
+                <div>
+                    <strong>$286,397</strong>
+                    <small>Total Profit</small>
+                </div>
+
+                <div>
+                    <strong>5,009</strong>
+                    <small>Total Orders</small>
+                </div>
+
+                <div>
+                    <strong>12.47%</strong>
+                    <small>Profit Margin</small>
+                </div>
+            </div>
+
+            <!-- Interactive Tableau Dashboard -->
+            <section class="case-section">
+                <h2>Interactive Dashboard</h2>
+
+                <p>
+                    Explore the live Tableau dashboard below.
+                    Select a state on the map to filter sales,
+                    profit, and business performance metrics.
+                </p>
+
+                <div class="dashboard-frame">
+                    <tableau-viz
+                        id="tableau-dashboard"
+                        src="https://public.tableau.com/views/Superstore_Sales_Performance_17930515983010/SuperstoreSalesPerformanceDashboard"
+                        toolbar="bottom"
+                        hide-tabs>
+                    </tableau-viz>
+                </div>
+
+                <a
+                    class="project-link"
+                    href="https://public.tableau.com/app/profile/biencarlo.villa/viz/Superstore_Sales_Performance_17930515983010/SuperstoreSalesPerformanceDashboard"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Open Full Dashboard in Tableau Public
+                </a>
+            </section>
+
+            <!-- Project Overview -->
+            <section class="case-section">
+                <h2>Project Overview</h2>
+
+                <p>
+                    This project analyzes 9,994 retail records
+                    from the Sample Superstore dataset.
+                    The goal was to build an interactive dashboard
+                    that helps identify sales trends, profitable
+                    and unprofitable products, and regional
+                    differences in business performance.
+                </p>
+            </section>
+
+            <!-- Dashboard Features -->
+            <section class="case-section">
+                <h2>Dashboard Features</h2>
+
+                <ul>
+                    <li>Four key performance indicators</li>
+                    <li>Monthly sales trends from 2014 to 2017</li>
+                    <li>Profit comparison by product subcategory</li>
+                    <li>Geographic sales performance by state</li>
+                    <li>Interactive state filtering across charts</li>
+                </ul>
+            </section>
+
+            <!-- Calculated Fields -->
+            <section class="case-section">
+                <h2>Calculated Fields</h2>
+
+                <h3>Profit Margin</h3>
+
+                <pre class="formula"><code>IF SUM([Sales]) != 0 THEN
+    SUM([Profit]) / SUM([Sales])
+END</code></pre>
+
+                <h3>Total Orders</h3>
+
+                <pre class="formula"><code>COUNTD([Order ID])</code></pre>
+            </section>
+
+            <!-- Business Insights -->
+            <section class="case-section">
+                <h2>Business Insights</h2>
+
+                <ul>
+                    <li>
+                        Overall sales reached approximately
+                        $2.30 million, with a 12.47% profit margin.
+                    </li>
+
+                    <li>
+                        California generated approximately
+                        $457,688 in sales and $76,381 in profit.
+                    </li>
+
+                    <li>
+                        Texas generated approximately $170,188
+                        in sales but recorded a loss of $25,729.
+                    </li>
+
+                    <li>
+                        High sales do not always indicate strong
+                        profitability. Regional analysis helps
+                        identify areas requiring attention.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Development Process -->
+            <section class="case-section">
+                <h2>Development Process</h2>
+
+                <p>
+                    Select a step to explore how the Tableau dashboard
+                    was developed, from importing the dataset to
+                    testing interactive filters.
+                </p>
+
+                <div class="process-steps">
+
+                    <!-- 01 -->
+                    <details>
+                        <summary>
+                            <div>
+                                <span class="step-title">
+                                    01. Data Import
+                                </span>
+                                <span class="step-description">
+                                    Import and preview the Sample Superstore dataset.
+                                </span>
+                            </div>
+                            <span class="step-arrow">⌄</span>
+                        </summary>
+
+                        <div class="step-content">
+                            <img
+                                src="images/tableau/01-data-import.png"
+                                alt="Tableau data import"
+                                loading="lazy">
+                        </div>
+                    </details>
+
+                    <!-- 02 -->
+                    <details>
+                        <summary>
+                            <div>
+                                <span class="step-title">
+                                    02. Data Exploration
+                                </span>
+                                <span class="step-description">
+                                    Explore sales performance across product categories.
+                                </span>
+                            </div>
+                            <span class="step-arrow">⌄</span>
+                        </summary>
+
+                        <div class="step-content">
+                            <img
+                                src="images/tableau/02-data-exploration.png"
+                                alt="Tableau data exploration"
+                                loading="lazy">
+                        </div>
+                    </details>
+
+                    <!-- 03 -->
+                    <details>
+                        <summary>
+                            <div>
+                                <span class="step-title">
+                                    03. Calculated Fields
+                                </span>
+                                <span class="step-description">
+                                    Create calculations to measure profitability
+                                    and business performance.
+                                </span>
+                            </div>
+                            <span class="step-arrow">⌄</span>
+                        </summary>
+
+                        <div class="step-content">
+                            <h3>Profit Margin Calculation</h3>
+
+                            <pre class="formula"><code>IF SUM([Sales]) != 0 THEN
+    SUM([Profit]) / SUM([Sales])
+END</code></pre>
+
+                            <img
+                                src="images/tableau/03-calculated-fields.png"
+                                alt="Tableau calculated fields"
+                                loading="lazy">
+                        </div>
+                    </details>
+
+                    <!-- 04 -->
+                    <details>
+                        <summary>
+                            <div>
+                                <span class="step-title">
+                                    04. Monthly Sales Trends
+                                </span>
+                                <span class="step-description">
+                                    Analyze monthly sales trends from 2014 to 2017.
+                                </span>
+                            </div>
+                            <span class="step-arrow">⌄</span>
+                        </summary>
+
+                        <div class="step-content">
+                            <img
+                                src="images/tableau/04-sales-trends.png"
+                                alt="Monthly sales trends"
+                                loading="lazy">
+                        </div>
+                    </details>
+
+                    <!-- 05 -->
+                    <details>
+                        <summary>
+                            <div>
+                                <span class="step-title">
+                                    05. Profit by Subcategory
+                                </span>
+                                <span class="step-description">
+                                    Identify profitable and unprofitable
+                                    product subcategories.
+                                </span>
+                            </div>
+                            <span class="step-arrow">⌄</span>
+                        </summary>
+
+                        <div class="step-content">
+                            <img
+                                src="images/tableau/05-category-performance.png"
+                                alt="Profit by subcategory"
+                                loading="lazy">
+                        </div>
+                    </details>
+
+                    <!-- 06 -->
+                    <details>
+                        <summary>
+                            <div>
+                                <span class="step-title">
+                                    06. Sales by State
+                                </span>
+                                <span class="step-description">
+                                    Visualize geographic sales performance
+                                    across the United States.
+                                </span>
+                            </div>
+                            <span class="step-arrow">⌄</span>
+                        </summary>
+
+                        <div class="step-content">
+                            <img
+                                src="images/tableau/06-sales-by-state.png"
+                                alt="Sales by state map"
+                                loading="lazy">
+                        </div>
+                    </details>
+
+                    <!-- 07 -->
+                    <details>
+                        <summary>
+                            <div>
+                                <span class="step-title">
+                                    07. Dashboard Development
+                                </span>
+                                <span class="step-description">
+                                    Combine KPI cards, charts, and maps
+                                    into one interactive dashboard.
+                                </span>
+                            </div>
+                            <span class="step-arrow">⌄</span>
+                        </summary>
+
+                        <div class="step-content">
+                            <img
+                                src="images/tableau/07-dashboard-overview.png"
+                                alt="Completed Tableau dashboard"
+                                loading="lazy">
+                        </div>
+                    </details>
+
+                    <!-- 08 -->
+                    <details>
+                        <summary>
+                            <div>
+                                <span class="step-title">
+                                    08. Texas Interactive Filter
+                                </span>
+                                <span class="step-description">
+                                    Test state filtering and examine
+                                    negative profitability.
+                                </span>
+                            </div>
+                            <span class="step-arrow">⌄</span>
+                        </summary>
+
+                        <div class="step-content">
+                            <p>
+                                Texas generated approximately $170,188
+                                in sales but recorded a loss of $25,729.
+                            </p>
+
+                            <img
+                                src="images/tableau/08-texas-filter.png"
+                                alt="Texas interactive filter"
+                                loading="lazy">
+                        </div>
+                    </details>
+
+                    <!-- 09 -->
+                    <details>
+                        <summary>
+                            <div>
+                                <span class="step-title">
+                                    09. California Interactive Filter
+                                </span>
+                                <span class="step-description">
+                                    Test state filtering and examine
+                                    positive profitability.
+                                </span>
+                            </div>
+                            <span class="step-arrow">⌄</span>
+                        </summary>
+
+                        <div class="step-content">
+                            <p>
+                                California generated approximately
+                                $457,688 in sales and $76,381 in profit.
+                            </p>
+
+                            <img
+                                src="images/tableau/09-california-filter.png"
+                                alt="California interactive filter"
+                                loading="lazy">
+                        </div>
+                    </details>
+
+                </div>
+            </section>
+
+            <!-- GitHub Repository -->
+            <section class="case-section">
+                <h2>Project Repository</h2>
+
+                <p>
+                    Explore the Tableau workbook, dataset,
+                    documentation, and development screenshots
+                    on GitHub.
+                </p>
+
+                <!-- Replace YOUR-USERNAME -->
+                <a
+                    class="project-link secondary"
+                    href="https://github.com/biencarlovilla/tableau-superstore-sales-analysis"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    View GitHub Repository
+                </a>
+            </section>
+
+        </div>
+    </main>
+
+</body>
+</html>
