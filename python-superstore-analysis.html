@@ -1,0 +1,849 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Superstore Sales Analysis | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .case-study {
+            background: #101827;
+            color: #f1f5f9;
+            padding: 55px 7% 90px;
+        }
+
+        .case-container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #93c5fd;
+            text-decoration: none;
+            margin-bottom: 40px;
+        }
+
+        .case-eyebrow {
+            color: #93c5fd;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .case-study h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            margin: 15px 0;
+        }
+
+        .case-lead,
+        .case-section > p {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .case-tags {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .case-tags span {
+            background: #23334a;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 30px 0 55px;
+        }
+
+        .case-metrics div {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 9px;
+        }
+
+        .case-metrics strong {
+            display: block;
+            font-size: 25px;
+        }
+
+        .case-metrics small {
+            color: #94a3b8;
+        }
+
+        .case-section {
+            margin: 48px 0;
+        }
+
+        .case-section h2 {
+            font-size: 30px;
+            margin-bottom: 22px;
+        }
+
+        .sql-accordion {
+            border: 1px solid #334155;
+            border-radius: 10px;
+            margin: 12px 0;
+            overflow: hidden;
+            background: #1e293b;
+        }
+
+        .sql-accordion summary {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 23px;
+            list-style: none;
+        }
+
+        .sql-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .sql-accordion summary strong {
+            display: block;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .sql-accordion summary small {
+            display: block;
+            color: #94a3b8;
+            margin-top: 9px;
+        }
+
+        .chevron {
+            color: #cbd5e1;
+            font-size: 24px;
+        }
+
+        .sql-accordion[open] .chevron {
+            transform: rotate(180deg);
+        }
+
+        .sql-detail {
+            background: #111b2b;
+            border-top: 1px solid #334155;
+            padding: 24px;
+        }
+
+        .code-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+
+        .copy-sql {
+            background: #26364c;
+            color: #e2e8f0;
+            border: 1px solid #475569;
+            padding: 7px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .sql-detail pre {
+            background: #080f1d;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            color: #bae6fd;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .sql-detail h3 {
+            color: #93c5fd;
+            font-size: 14px;
+            margin: 24px 0 12px;
+        }
+
+        .sql-detail p {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .result-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+
+        .output-note {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .case-section a:not(.github-case-link) {
+            color: #93c5fd;
+            overflow-wrap: anywhere;
+        }
+
+        .case-section ul {
+            color: #cbd5e1;
+            line-height: 1.9;
+            padding-left: 22px;
+        }
+
+        .sql-accordion summary:hover {
+            background: #26364c;
+        }
+
+        .github-case-link {
+            display: inline-block;
+            padding: 15px 22px;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 750px) {
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .case-study {
+                padding: 40px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">BV.</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="case-study">
+        <div class="case-container">
+
+            <a class="back-link" href="projects.html">
+                ← Back to Projects
+            </a>
+
+            <p class="case-eyebrow">PROJECT 03 / PYTHON</p>
+
+            <h1>Python Superstore Sales Analysis</h1>
+
+            <p class="case-lead">
+                Exploring retail sales, profitability, and trends
+                using Python, Pandas, and Matplotlib.
+                Browse the code and actual outputs from each stage.
+            </p>
+
+            <div class="case-tags">
+                <span>Python</span>
+                <span>Pandas</span>
+                <span>Matplotlib</span>
+                <span>PyCharm</span>
+                <span>Data Analysis</span>
+            </div>
+
+            <div class="case-metrics">
+                <div>
+                    <strong>9,994</strong>
+                    <small>Records</small>
+                </div>
+                <div>
+                    <strong>$2.30M</strong>
+                    <small>Total Sales</small>
+                </div>
+                <div>
+                    <strong>$286.4K</strong>
+                    <small>Total Profit</small>
+                </div>
+                <div>
+                    <strong>5,009</strong>
+                    <small>Unique Orders</small>
+                </div>
+            </div>
+
+            <section class="case-section">
+                <h2>Project Overview</h2>
+                <p>
+                    I used Python to explore the Sample Superstore
+                    dataset, inspect and prepare the data, calculate
+                    business metrics, and visualize sales performance
+                    by category, region, and month.
+                </p>
+            </section>
+
+            <section class="case-section">
+                <h2>Dataset</h2>
+                <p>
+                    <strong>Sample Superstore</strong> contains
+                    9,994 rows and 21 columns covering orders,
+                    products, customers, sales, discounts, and profit
+                    from 2014 through 2017.
+                    This is the same dataset used in my Power BI project.
+                </p>
+
+                <p>
+                    <a href="https://github.com/biencarlovilla/python-superstore-sales-analysis/blob/main/data/Sample%20-%20Superstore.csv"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        View the Dataset on GitHub ↗
+                    </a>
+                </p>
+            </section>
+
+            <section class="case-section">
+                <h2>Python Code & Outputs</h2>
+                <p>
+                    Select a step to see the actual Python code
+                    and its output screenshot.
+                </p>
+
+                <!-- 01: DATA IMPORT -->
+                <details class="sql-accordion">
+                    <summary>
+                        <span>
+                            <strong>01. Dataset Import</strong>
+                            <small>Load and preview the CSV dataset.</small>
+                        </span>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <div class="code-heading">
+                            <span>Python Code</span>
+                            <button class="copy-sql" onclick="copyCode(this)">
+                                Copy Code
+                            </button>
+                        </div>
+
+<pre><code>import pandas as pd
+
+# Load the Superstore dataset
+df = pd.read_csv("data/Sample - Superstore.csv", encoding="cp1252")
+
+# Display the first five rows
+print("Superstore Dataset Preview:")
+print(df.head())</code></pre>
+
+                        <h3>Actual Output</h3>
+                        <img class="result-image"
+                             src="images/python/01-data-import.png"
+                             alt="Dataset import output"
+                             loading="lazy">
+                    </div>
+                </details>
+
+                <!-- 02: DATA INSPECTION -->
+                <details class="sql-accordion">
+                    <summary>
+                        <span>
+                            <strong>02. Data Inspection</strong>
+                            <small>Check rows, columns, and missing values.</small>
+                        </span>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <div class="code-heading">
+                            <span>Python Code</span>
+                            <button class="copy-sql" onclick="copyCode(this)">
+                                Copy Code
+                            </button>
+                        </div>
+
+<pre><code># Check dataset size
+print("\nDataset Size:")
+print(df.shape)
+
+# Check column names
+print("\nColumn Names:")
+print(df.columns.tolist())
+
+# Check missing values
+print("\nMissing Values:")
+print(df.isnull().sum())</code></pre>
+
+                        <h3>Actual Output</h3>
+                        <img class="result-image"
+                             src="images/python/02-data-inspection.png"
+                             alt="Data inspection output"
+                             loading="lazy">
+                    </div>
+                </details>
+
+                <!-- 03: DATA CLEANING -->
+                <details class="sql-accordion">
+                    <summary>
+                        <span>
+                            <strong>03. Data Cleaning</strong>
+                            <small>Check duplicates and convert dates.</small>
+                        </span>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <div class="code-heading">
+                            <span>Python Code</span>
+                            <button class="copy-sql" onclick="copyCode(this)">
+                                Copy Code
+                            </button>
+                        </div>
+
+<pre><code># Check for duplicate rows
+print("\nDuplicate Rows:")
+print(df.duplicated().sum())
+
+# Convert date columns
+df["Order Date"] = pd.to_datetime(df["Order Date"], format="%m/%d/%Y")
+df["Ship Date"] = pd.to_datetime(df["Ship Date"], format="%m/%d/%Y")
+
+# Verify date formats
+print("\nUpdated Date Types:")
+print(df[["Order Date", "Ship Date"]].dtypes)</code></pre>
+
+                        <h3>Actual Output</h3>
+                        <img class="result-image"
+                             src="images/python/03-data-cleaning.png"
+                             alt="Data cleaning output"
+                             loading="lazy">
+                    </div>
+                </details>
+
+                <!-- 04: SALES SUMMARY -->
+                <details class="sql-accordion">
+                    <summary>
+                        <span>
+                            <strong>04. Sales Performance Summary</strong>
+                            <small>Calculate total sales, profit, and orders.</small>
+                        </span>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <div class="code-heading">
+                            <span>Python Code</span>
+                            <button class="copy-sql" onclick="copyCode(this)">
+                                Copy Code
+                            </button>
+                        </div>
+
+<pre><code># Calculate key sales metrics
+total_sales = df["Sales"].sum()
+total_profit = df["Profit"].sum()
+total_orders = df["Order ID"].nunique()
+
+# Display sales summary
+print("\nSales Performance Summary:")
+print(f"Total Sales: ${total_sales:,.2f}")
+print(f"Total Profit: ${total_profit:,.2f}")
+print(f"Total Orders: {total_orders:,}")</code></pre>
+
+                        <h3>Actual Output</h3>
+                        <img class="result-image"
+                             src="images/python/04-sales-summary.png"
+                             alt="Sales performance output"
+                             loading="lazy">
+                    </div>
+                </details>
+
+                <!-- 05: SALES BY CATEGORY -->
+                <details class="sql-accordion">
+                    <summary>
+                        <span>
+                            <strong>05. Sales by Category</strong>
+                            <small>Compare sales across product categories.</small>
+                        </span>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <div class="code-heading">
+                            <span>Python Code</span>
+                            <button class="copy-sql" onclick="copyCode(this)">
+                                Copy Code
+                            </button>
+                        </div>
+
+<pre><code># Calculate total sales by category
+category_sales = df.groupby("Category")["Sales"].sum()
+
+# Sort categories by highest sales
+category_sales = category_sales.sort_values(ascending=False)
+
+# Display results
+print("\nSales by Category:")
+print(category_sales.round(2))</code></pre>
+
+                        <h3>Actual Output</h3>
+                        <img class="result-image"
+                             src="images/python/05-sales-by-category.png"
+                             alt="Sales by category output"
+                             loading="lazy">
+                    </div>
+                </details>
+
+                <!-- 06: PROFIT BY CATEGORY -->
+                <details class="sql-accordion">
+                    <summary>
+                        <span>
+                            <strong>06. Profit by Category</strong>
+                            <small>Identify the most profitable categories.</small>
+                        </span>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <div class="code-heading">
+                            <span>Python Code</span>
+                            <button class="copy-sql" onclick="copyCode(this)">
+                                Copy Code
+                            </button>
+                        </div>
+
+<pre><code># Calculate total profit by category
+category_profit = df.groupby("Category")["Profit"].sum()
+
+# Sort categories by highest profit
+category_profit = category_profit.sort_values(ascending=False)
+
+# Display results
+print("\nProfit by Category:")
+print(category_profit.round(2))</code></pre>
+
+                        <h3>Actual Output</h3>
+                        <img class="result-image"
+                             src="images/python/06-profit-by-category.png"
+                             alt="Profit by category output"
+                             loading="lazy">
+                    </div>
+                </details>
+
+                <!-- 07: SALES BY REGION -->
+                <details class="sql-accordion">
+                    <summary>
+                        <span>
+                            <strong>07. Sales by Region</strong>
+                            <small>Compare sales across four regions.</small>
+                        </span>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <div class="code-heading">
+                            <span>Python Code</span>
+                            <button class="copy-sql" onclick="copyCode(this)">
+                                Copy Code
+                            </button>
+                        </div>
+
+<pre><code># Calculate total sales by region
+regional_sales = df.groupby("Region")["Sales"].sum()
+
+# Sort regions by highest sales
+regional_sales = regional_sales.sort_values(ascending=False)
+
+# Display results
+print("\nSales by Region:")
+print(regional_sales.round(2))</code></pre>
+
+                        <h3>Actual Output</h3>
+                        <img class="result-image"
+                             src="images/python/07-sales-by-region.png"
+                             alt="Regional sales output"
+                             loading="lazy">
+                    </div>
+                </details>
+
+                <!-- 08: PROFIT BY REGION -->
+                <details class="sql-accordion">
+                    <summary>
+                        <span>
+                            <strong>08. Profit by Region</strong>
+                            <small>Compare regional profitability.</small>
+                        </span>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <div class="code-heading">
+                            <span>Python Code</span>
+                            <button class="copy-sql" onclick="copyCode(this)">
+                                Copy Code
+                            </button>
+                        </div>
+
+<pre><code># Calculate total profit by region
+regional_profit = df.groupby("Region")["Profit"].sum()
+
+# Sort regions by highest profit
+regional_profit = regional_profit.sort_values(ascending=False)
+
+# Display results
+print("\nProfit by Region:")
+print(regional_profit.round(2))</code></pre>
+
+                        <h3>Actual Output</h3>
+                        <img class="result-image"
+                             src="images/python/08-profit-by-region.png"
+                             alt="Regional profit output"
+                             loading="lazy">
+                    </div>
+                </details>
+
+                <!-- 09: CATEGORY SALES CHART -->
+                <details class="sql-accordion">
+                    <summary>
+                        <span>
+                            <strong>09. Sales by Category Chart</strong>
+                            <small>Visualize category revenue.</small>
+                        </span>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <div class="code-heading">
+                            <span>Python Code</span>
+                            <button class="copy-sql" onclick="copyCode(this)">
+                                Copy Code
+                            </button>
+                        </div>
+
+<pre><code>import matplotlib.pyplot as plt
+
+# Create sales by category chart
+category_sales.plot(kind="bar")
+
+# Add chart labels
+plt.title("Total Sales by Category")
+plt.xlabel("Product Category")
+plt.ylabel("Total Sales ($)")
+
+# Improve layout
+plt.xticks(rotation=0)
+plt.tight_layout()
+
+# Display chart
+plt.show()</code></pre>
+
+                        <h3>Actual Output</h3>
+                        <img class="result-image"
+                             src="images/python/09-sales-category-chart.png"
+                             alt="Sales by category chart"
+                             loading="lazy">
+                    </div>
+                </details>
+
+                <!-- 10: CATEGORY PROFIT CHART -->
+                <details class="sql-accordion">
+                    <summary>
+                        <span>
+                            <strong>10. Profit by Category Chart</strong>
+                            <small>Visualize category profitability.</small>
+                        </span>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <div class="code-heading">
+                            <span>Python Code</span>
+                            <button class="copy-sql" onclick="copyCode(this)">
+                                Copy Code
+                            </button>
+                        </div>
+
+<pre><code># Create profit by category chart
+category_profit.plot(kind="bar")
+
+# Add chart labels
+plt.title("Total Profit by Category")
+plt.xlabel("Product Category")
+plt.ylabel("Total Profit ($)")
+
+# Improve layout
+plt.xticks(rotation=0)
+plt.tight_layout()
+
+# Display chart
+plt.show()</code></pre>
+
+                        <h3>Actual Output</h3>
+                        <img class="result-image"
+                             src="images/python/10-profit-category-chart.png"
+                             alt="Profit by category chart"
+                             loading="lazy">
+                    </div>
+                </details>
+
+                <!-- 11: REGIONAL SALES CHART -->
+                <details class="sql-accordion">
+                    <summary>
+                        <span>
+                            <strong>11. Regional Sales Chart</strong>
+                            <small>Visualize regional sales performance.</small>
+                        </span>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <div class="code-heading">
+                            <span>Python Code</span>
+                            <button class="copy-sql" onclick="copyCode(this)">
+                                Copy Code
+                            </button>
+                        </div>
+
+<pre><code># Create regional sales chart
+regional_sales.plot(kind="bar")
+
+# Add chart labels
+plt.title("Total Sales by Region")
+plt.xlabel("Region")
+plt.ylabel("Total Sales ($)")
+
+# Improve layout
+plt.xticks(rotation=0)
+plt.tight_layout()
+
+# Display chart
+plt.show()</code></pre>
+
+                        <h3>Actual Output</h3>
+                        <img class="result-image"
+                             src="images/python/11-regional-sales-chart.png"
+                             alt="Regional sales chart"
+                             loading="lazy">
+                    </div>
+                </details>
+
+                <!-- 12: MONTHLY SALES TREND -->
+                <details class="sql-accordion">
+                    <summary>
+                        <span>
+                            <strong>12. Monthly Sales Trend</strong>
+                            <small>Analyze monthly sales over time.</small>
+                        </span>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <div class="code-heading">
+                            <span>Python Code</span>
+                            <button class="copy-sql" onclick="copyCode(this)">
+                                Copy Code
+                            </button>
+                        </div>
+
+<pre><code># Calculate monthly sales
+monthly_sales = df.groupby(
+    df["Order Date"].dt.to_period("M")
+)["Sales"].sum()
+
+# Create monthly sales trend chart
+monthly_sales.index = monthly_sales.index.to_timestamp()
+monthly_sales.plot(kind="line", marker="o", figsize=(12, 5))
+
+# Add chart labels
+plt.title("Monthly Sales Trend")
+plt.xlabel("Month")
+plt.ylabel("Total Sales ($)")
+
+# Improve layout
+plt.grid(True)
+plt.tight_layout()
+
+# Display chart
+plt.show()</code></pre>
+
+                        <h3>Actual Output</h3>
+                        <img class="result-image"
+                             src="images/python/12-monthly-sales-trend.png"
+                             alt="Monthly sales trend chart"
+                             loading="lazy">
+                    </div>
+                </details>
+
+            </section>
+
+            <!-- KEY FINDINGS -->
+            <section class="case-section">
+                <h2>Key Findings</h2>
+
+                <ul>
+                    <li>
+                        Technology generated the highest sales
+                        ($836,154.03) and profit ($145,454.95).
+                    </li>
+                    <li>
+                        Furniture generated $741,999.80 in sales
+                        but only $18,451.27 in profit.
+                    </li>
+                    <li>
+                        The West region led in both sales
+                        ($725,457.82) and profit ($108,418.45).
+                    </li>
+                    <li>
+                        Monthly sales fluctuated, with a strong
+                        peak toward the end of 2017.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- GITHUB -->
+            <section class="case-section">
+                <h2>Source Code & Repository</h2>
+
+                <p>
+                    Explore the full Python script, dataset,
+                    screenshots, and project files on GitHub.
+                </p>
+
+                <a class="github-case-link"
+                   href="https://github.com/biencarlovilla/python-superstore-sales-analysis"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    View GitHub Repository ↗
+                </a>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        function copyCode(button) {
+            const code = button.closest(".sql-detail")
+                               .querySelector("code").innerText;
+
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = button.textContent;
+                button.textContent = "Copied!";
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 1500);
+            }).catch(() => {
+                button.textContent = "Select code to copy";
+            });
+        }
+    </script>
+</body>
+</html>
