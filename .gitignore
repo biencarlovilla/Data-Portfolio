@@ -1,0 +1,15 @@
+
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code local settings
+.vscode/
+
+# Temporary files
+*.log
+*.tmp
+
+# Original screen recordings
+*.mov

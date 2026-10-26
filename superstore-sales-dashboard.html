@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superstore Sales Dashboard | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .case-study {
+            background: #101827;
+            color: #f1f5f9;
+            padding: 55px 7% 90px;
+            min-height: 100vh;
+        }
+
+        .case-container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #93c5fd;
+            text-decoration: none;
+            margin-bottom: 40px;
+        }
+
+        .case-eyebrow {
+            color: #93c5fd;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .case-study h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            margin: 15px 0;
+        }
+
+        .case-lead, .case-section p {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .case-tags {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .case-tags span {
+            background: #23334a;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 30px 0 45px;
+        }
+
+        .case-metrics div {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 9px;
+        }
+
+        .case-metrics strong {
+            display: block;
+            font-size: 25px;
+        }
+
+        .case-metrics small {
+            color: #94a3b8;
+        }
+
+        .dashboard-preview {
+            width: 100%;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .case-section {
+            margin: 48px 0;
+        }
+
+        .case-section h2 {
+            font-size: 30px;
+            margin-bottom: 22px;
+        }
+
+        .sql-accordion {
+            border: 1px solid #334155;
+            border-radius: 10px;
+            margin: 12px 0;
+            overflow: hidden;
+            background: #1e293b;
+        }
+
+        .sql-accordion summary {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 23px;
+            list-style: none;
+        }
+
+        .sql-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .sql-accordion summary strong {
+            display: block;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .sql-accordion summary small {
+            display: block;
+            color: #94a3b8;
+            margin-top: 9px;
+        }
+
+        .chevron {
+            color: #cbd5e1;
+            font-size: 24px;
+        }
+
+        .sql-accordion[open] .chevron {
+            transform: rotate(180deg);
+        }
+
+        .sql-detail {
+            background: #111b2b;
+            border-top: 1px solid #334155;
+            padding: 24px;
+        }
+
+        .sql-detail p {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .sql-detail video {
+            display: block;
+            width: 100%;
+            margin-top: 18px;
+            border-radius: 8px;
+            background: #080f1d;
+        }
+
+        .github-case-link {
+            display: inline-block;
+            padding: 15px 22px;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 750px) {
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .case-study {
+                padding: 40px 6%;
+            }
+        }
+
+
+        /* Match Project 1 dataset link */
+        .dataset-link {
+            color: #93c5fd;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .dataset-link:hover {
+            color: #bfdbfe;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">BV.</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="case-study">
+        <div class="case-container">
+
+            <a href="projects.html" class="back-link">
+                ← Back to Projects
+            </a>
+
+            <div class="case-eyebrow">PROJECT 02 / POWER BI</div>
+
+            <h1>Superstore Sales Performance Dashboard</h1>
+
+            <p class="case-lead">
+                An interactive Power BI dashboard analyzing
+                9,994 retail records to understand sales trends,
+                profitability, order performance, and regional results.
+            </p>
+
+            <div class="case-tags">
+                <span>Power BI</span>
+                <span>Power Query</span>
+                <span>DAX</span>
+                <span>Data Visualization</span>
+            </div>
+
+            <div class="case-metrics">
+                <div>
+                    <strong>$2.30M</strong>
+                    <small>Total Sales</small>
+                </div>
+                <div>
+                    <strong>$286.40K</strong>
+                    <small>Total Profit</small>
+                </div>
+                <div>
+                    <strong>12.47%</strong>
+                    <small>Profit Margin</small>
+                </div>
+                <div>
+                    <strong>9,994</strong>
+                    <small>Dataset Records</small>
+                </div>
+            </div>
+
+            <section class="case-section">
+                <h2>Dashboard Overview</h2>
+                <img
+                    src="images/dashboard-overview.png"
+                    alt="Superstore Power BI Sales Dashboard"
+                    class="dashboard-preview"
+                >
+                <p>
+                    The dashboard includes five KPI cards, three analytical
+                    charts, and interactive filters for Year, Region,
+                    and Category.
+                </p>
+            </section>
+
+            <section class="case-section">
+                <h2>Development Process</h2>
+                <p>
+                    Expand each section to explore the steps used
+                    to develop the dashboard.
+                </p>
+
+                <details class="sql-accordion">
+                    <summary>
+                        <div>
+                            <strong>01. Data Import</strong>
+                            <small>Loading the Superstore dataset</small>
+                        </div>
+                        <span class="chevron">⌄</span>
+                    </summary>
+                    <div class="sql-detail">
+                        <p>Imported the Superstore CSV dataset into Power BI.</p>
+                        <video controls preload="metadata">
+                            <source src="videos/01-data-import.mp4" type="video/mp4">
+                            Your browser does not support video playback.
+                        </video>
+                    </div>
+                </details>
+
+                <details class="sql-accordion">
+                    <summary>
+                        <div>
+                            <strong>02. Data Cleaning</strong>
+                            <small>Preparing data with Power Query</small>
+                        </div>
+                        <span class="chevron">⌄</span>
+                    </summary>
+                    <div class="sql-detail">
+                        <p>
+                            Used Power Query to review the dataset,
+                            correct column data types, fix text encoding,
+                            and check for duplicate records.
+                            Verified that all 9,994 records were retained.
+                        </p>
+                        <video controls preload="metadata">
+                            <source src="videos/02-data-cleaning.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </details>
+
+                <details class="sql-accordion">
+                    <summary>
+                        <div>
+                            <strong>03. Data Modeling</strong>
+                            <small>Preparing the reporting model</small>
+                        </div>
+                        <span class="chevron">⌄</span>
+                    </summary>
+                    <div class="sql-detail">
+                        <p>
+                            Created and reviewed the Power BI semantic model
+                            using the cleaned Superstore dataset.
+                            Verified the available fields and prepared
+                            the model for DAX calculations and reporting.
+                        </p>
+                        <video controls preload="metadata">
+                            <source src="videos/03-data-modeling.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </details>
+
+                
+                <details class="sql-accordion">
+                    <summary>
+                        <div>
+                            <strong>04. DAX Calculations</strong>
+                            <small>Creating five KPI measures in Power BI</small>
+                        </div>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <p>
+                            Created five DAX measures to analyze sales,
+                            profitability, and order performance.
+                            These calculations update automatically
+                            when dashboard filters are applied.
+                        </p>
+
+                        <video controls preload="metadata">
+                            <source
+                                src="videos/04-dax-calculations.mp4"
+                                type="video/mp4"
+                            >
+                            Your browser does not support video playback.
+                        </video>
+
+                        <h3>DAX Measures</h3>
+
+                        <h4>1. Total Sales</h4>
+                        <pre><code>Total Sales = SUM('Sample - Superstore 3'[Sales])</code></pre>
+
+                        <h4>2. Total Profit</h4>
+                        <pre><code>Total Profit = SUM('Sample - Superstore 3'[Profit])</code></pre>
+
+                        <h4>3. Total Orders</h4>
+                        <pre><code>Total Orders = DISTINCTCOUNT('Sample - Superstore 3'[Order ID])</code></pre>
+
+                        <h4>4. Profit Margin</h4>
+                        <pre><code>Profit Margin = DIVIDE([Total Profit], [Total Sales], 0)</code></pre>
+
+                        <h4>5. Average Order Value</h4>
+                        <pre><code>Average Order Value = DIVIDE([Total Sales], [Total Orders], 0)</code></pre>
+                    </div>
+                </details>
+
+
+                
+                <details class="sql-accordion">
+                    <summary>
+                        <div>
+                            <strong>05. Dashboard Development</strong>
+                            <small>Building KPI cards and visualizations</small>
+                        </div>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <p>
+                            Built an interactive Power BI dashboard
+                            using KPI cards and charts to visualize
+                            sales performance, profitability, and
+                            business trends.
+                        </p>
+
+                        <h3>1. KPI Cards - Part 1</h3>
+                        <p>
+                            Started creating KPI cards to display
+                            key sales and profit metrics.
+                        </p>
+                        <video controls preload="metadata">
+                            <source src="videos/05-kpi-cards-part1.mp4"
+                                    type="video/mp4">
+                        </video>
+
+                        <h3>2. KPI Cards - Part 2</h3>
+                        <p>
+                            Completed the five KPI cards, including
+                            Total Sales, Total Profit, Total Orders,
+                            Profit Margin, and Average Order Value.
+                        </p>
+                        <video controls preload="metadata">
+                            <source src="videos/05-kpi-cards-part2.mp4"
+                                    type="video/mp4">
+                        </video>
+
+                        <h3>3. Monthly Sales Trend</h3>
+                        <p>
+                            Created a line chart to analyze how
+                            sales changed over time.
+                        </p>
+                        <video controls preload="metadata">
+                            <source src="videos/05-sales-trend-final.mp4"
+                                    type="video/mp4">
+                        </video>
+
+                        <h3>4. Sales by Category</h3>
+                        <p>
+                            Created a bar chart to compare sales
+                            across product categories.
+                        </p>
+                        <video controls preload="metadata">
+                            <source src="videos/05-sales-by-category.mp4"
+                                    type="video/mp4">
+                        </video>
+
+                        <h3>5. Profit by Region</h3>
+                        <p>
+                            Built a column chart to compare
+                            profitability across regions.
+                        </p>
+                        <video controls preload="metadata">
+                            <source src="videos/05-profit-by-region.mp4"
+                                    type="video/mp4">
+                        </video>
+
+                        <h3>6. Dashboard Polishing</h3>
+                        <p>
+                            Refined the dashboard layout, spacing,
+                            colors, and formatting to create a
+                            consistent dark-themed design.
+                        </p>
+                        <video controls preload="metadata">
+                            <source src="videos/05-dashboard-polishing-final.mp4"
+                                    type="video/mp4">
+                        </video>
+                    </div>
+                </details>
+
+                
+                <details class="sql-accordion">
+                    <summary>
+                        <div>
+                            <strong>06. Interactive Slicers</strong>
+                            <small>Filtering dashboard data dynamically</small>
+                        </div>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <p>
+                            Added interactive slicers for Year, Region,
+                            and Category. These filters allow users to
+                            explore specific segments of the dataset
+                            while automatically updating KPI cards
+                            and visualizations.
+                        </p>
+
+                        <h3>1. Year Slicers</h3>
+                        <p>
+                            Created dropdown filters to analyze sales
+                            and profit performance across different
+                            years and geographic regions.
+                        </p>
+
+                        <video controls preload="metadata">
+                            <source
+                                src="videos/06-interactive-slicers-part1.mp4"
+                                type="video/mp4">
+                        </video>
+
+                        <h3>2. Region and Category Slicer</h3>
+                        <p>
+                            Added region and category filter to compare
+                            performance across Furniture,
+                            Office Supplies, and Technology.
+                        </p>
+
+                        <video controls preload="metadata">
+                            <source
+                                src="videos/06-interactive-slicers-category.mp4"
+                                type="video/mp4">
+                        </video>
+                    </div>
+                </details>
+                
+                <details class="sql-accordion">
+                    <summary>
+                        <div>
+                            <strong>07. Final Dashboard Showcase</strong>
+                            <small>Exploring the completed Power BI dashboard</small>
+                        </div>
+                        <span class="chevron">⌄</span>
+                    </summary>
+
+                    <div class="sql-detail">
+                        <p>
+                            The completed dashboard brings together five
+                            KPI cards, three visualizations, and interactive
+                            filters to analyze 9,994 retail sales records.
+                            It provides an overview of sales performance,
+                            profitability, and business trends.
+                        </p>
+
+                        <h3>Completed Dashboard Demonstration</h3>
+                        <p>
+                            This recording demonstrates the final dashboard,
+                            including its layout, key metrics, visualizations,
+                            and interactive filtering capabilities.
+                        </p>
+
+                        <video controls preload="metadata">
+                            <source
+                                src="videos/07-final-dashboard-showcase.mp4"
+                                type="video/mp4">
+                            Your browser does not support video playback.
+                        </video>
+                    </div>
+                </details>
+
+            </section>
+
+            <section class="case-section">
+                <h2>Key Findings</h2>
+                <p>
+                    Technology generated the highest sales among the
+                    three product categories. The West region produced
+                    the highest total profit. The overall profit margin
+                    was approximately 12.47%.
+                </p>
+
+                <p>
+                    <strong>Dataset:</strong>
+                    <a class="dataset-link"
+                    href="https://github.com/Victory-Data/Superstore-Sales-Dataset"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                        Sample Superstore Dataset (GitHub)
+                    </a>
+                </p>
+
+            </section>
+
+            <section class="case-section">
+                <h2>GitHub Repository</h2>
+                <p>
+                    Explore the project documentation, DAX measures,
+                    and dashboard files on GitHub.
+                </p>
+                <a
+                    class="github-case-link"
+                    href="https://github.com/biencarlovilla/superstore-sales-dashboard"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View GitHub Repository →
+                </a>
+            </section>
+
+        </div>
+    </main>
+</body>
+</html>
