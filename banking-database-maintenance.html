@@ -1,0 +1,440 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Banking Database Maintenance &amp; Data Quality | Biencarlo Villa</title><link rel="stylesheet" href="style.css"><style>
+.case-study{background:#101827;color:#f1f5f9;padding:55px 7% 90px}.case-container{max-width:1100px;margin:auto}.back-link,.case-study a{color:#93c5fd}.case-eyebrow{color:#93c5fd;font-size:12px;letter-spacing:2px;margin-top:30px}.case-study h1{font-size:clamp(34px,5vw,56px);margin:15px 0}.case-lead,.case-section p{color:#cbd5e1;line-height:1.8}.case-tags{display:flex;gap:9px;flex-wrap:wrap;margin:25px 0}.case-tags span{background:#23334a;padding:8px 12px;border-radius:6px;font-size:12px}.case-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:30px 0 55px}.case-metrics div{background:#1e293b;padding:20px;border-radius:9px}.case-metrics strong{display:block;font-size:25px}.case-metrics small{color:#94a3b8}.case-section{margin:48px 0}.case-section h2{font-size:29px;margin-bottom:20px}.sql-accordion{border:1px solid #334155;border-radius:10px;margin:12px 0;overflow:hidden;background:#1e293b}.sql-accordion summary{cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:22px;list-style:none;gap:15px}.sql-accordion summary::-webkit-details-marker{display:none}.sql-accordion summary strong{display:block;font-size:19px;font-weight:550}.sql-accordion summary small{display:block;color:#94a3b8;margin-top:8px;line-height:1.5}.chevron{font-size:23px;color:#cbd5e1}.sql-accordion[open] .chevron{transform:rotate(180deg)}.accordion-body{padding:0 22px 25px;border-top:1px solid #334155}.accordion-body p{margin:18px 0}.accordion-body pre{background:#0b1220;color:#e2e8f0;border:1px solid #334155;border-radius:9px;padding:20px;overflow:auto;font-size:12px;line-height:1.65;white-space:pre}.evidence{display:grid;grid-template-columns:1fr;gap:18px;margin-top:22px}.evidence figure{margin:0}.evidence img{display:block;width:100%;height:auto;object-fit:contain;background:#0b1220;border:1px solid #334155;border-radius:8px}.evidence figcaption{font-size:12px;color:#94a3b8;margin-top:7px}.case-study ul{color:#cbd5e1;line-height:1.9;padding-left:22px}.case-link{display:inline-block;background:#2563eb;color:white!important;text-decoration:none;padding:13px 20px;border-radius:8px;margin:12px 12px 0 0}.case-link.secondary{background:#23334a}@media(max-width:680px){.case-metrics{grid-template-columns:repeat(2,1fr)}.case-study{padding:40px 5% 65px}.sql-accordion summary{padding:16px}.accordion-body{padding:0 14px 18px}}
+</style></head><body><header><nav><a href="index.html" class="logo">BV.</a><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a></div></nav></header><main class="case-study"><div class="case-container"><a class="back-link" href="projects.html">← Back to Projects</a><p class="case-eyebrow">DATABASE MANAGEMENT &amp; DATA ENGINEERING · PROJECT 01</p><h1>Banking Database Maintenance &amp; Data Quality</h1><p class="case-lead">A hands-on PostgreSQL administration project covering banking data quality audits, cleaning, relational integrity, indexing, routine maintenance, and verified backup recovery.</p><div class="case-tags"><span>PostgreSQL 18</span><span>SQL</span><span>Data Quality</span><span>Database Administration</span><span>Backup &amp; Recovery</span></div><div class="case-metrics"><div><strong>1,500</strong><small>Source Records</small></div><div><strong>675</strong><small>Formatting Issues Corrected</small></div><div><strong>3</strong><small>Primary Keys Added</small></div><div><strong>4</strong><small>Tables Restored</small></div></div><section class="case-section"><h2>Project Overview</h2><p>I built a PostgreSQL banking database using three CSV datasets, audited transaction quality, and cleaned formatting in a separate working table to preserve the originals. I validated keys, documented unresolved reference issues, performed maintenance, and restored a database backup into a separate test database.</p></section><section class="case-section"><h2>SQL &amp; DBA Workflow</h2><p>Open each phase to view the actual SQL scripts, explanations, and screenshots captured during execution.</p><details class="sql-accordion"><summary><span><strong>01 · Database Setup</strong><small>Created three source tables and imported 1,500 banking records.</small></span><span class="chevron">⌄</span></summary><div class="accordion-body"><p>Created three source tables and imported 1,500 banking records.</p><pre><code>
+-- Project #5: Banking Database Maintenance &amp; Data Quality
+-- Phase 1: Database Setup
+
+-- 1. Create customer table
+CREATE TABLE customers (
+    customer_id TEXT,
+    customer_name TEXT,
+    gender TEXT
+);
+
+-- 2. Create account table
+CREATE TABLE accounts (
+    account_id TEXT,
+    account_type TEXT,
+    status TEXT
+);
+
+-- 3. Create transaction table
+CREATE TABLE transactions (
+    transaction_id TEXT,
+    customer_id TEXT,
+    account_id TEXT,
+    branch_id TEXT,
+    employee_id TEXT,
+    date_id TEXT,
+    amount TEXT,
+    transaction_type TEXT,
+    transaction_status TEXT,
+    currency TEXT
+);
+
+-- 4. Verify tables
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = &#x27;public&#x27;
+ORDER BY table_name;
+
+
+-- 5. Import banking datasets
+
+\copy customers FROM &#x27;/Users/biencarlovilla/Desktop/Professional/Project5-Data-Maintenance-Quality/data/DimCustomer.csv&#x27; WITH (FORMAT csv, HEADER true);
+
+\copy accounts FROM &#x27;/Users/biencarlovilla/Desktop/Professional/Project5-Data-Maintenance-Quality/data/DimAccount.csv&#x27; WITH (FORMAT csv, HEADER true);
+
+\copy transactions FROM &#x27;/Users/biencarlovilla/Desktop/Professional/Project5-Data-Maintenance-Quality/data/FactBankTransactions.csv&#x27; WITH (FORMAT csv, HEADER true);
+
+
+-- 6. Verify imported records
+
+SELECT &#x27;customers&#x27; AS table_name, COUNT(*) AS total_rows
+FROM customers
+
+UNION ALL
+
+SELECT &#x27;accounts&#x27;, COUNT(*)
+FROM accounts
+
+UNION ALL
+
+SELECT &#x27;transactions&#x27;, COUNT(*)
+FROM transactions;
+</code></pre><div class="evidence"><figure><img loading="lazy" src="images/banking-dba/01_database_creation.png" alt="PostgreSQL output: Database Setup"><figcaption>01 database creation</figcaption></figure><figure><img loading="lazy" src="images/banking-dba/02_table_creation.png" alt="PostgreSQL output: Database Setup"><figcaption>02 table creation</figcaption></figure><figure><img loading="lazy" src="images/banking-dba/03_data_import.png" alt="PostgreSQL output: Database Setup"><figcaption>03 data import</figcaption></figure></div></div></details><details class="sql-accordion"><summary><span><strong>02 · Data Quality Audit</strong><small>Audited missing fields, inconsistent text, duplicates, and orphaned references.</small></span><span class="chevron">⌄</span></summary><div class="accordion-body"><p>Audited missing fields, inconsistent text, duplicates, and orphaned references.</p><pre><code>
+-- Project #5: Banking Database Maintenance &amp; Data Quality
+-- Phase 2: Data Quality Audit
+
+-- 1. Check missing values in transactions
+
+SELECT
+    COUNT(*) AS total_transactions,
+    COUNT(*) FILTER (
+        WHERE NULLIF(TRIM(amount), &#x27;&#x27;) IS NULL
+    ) AS missing_amount,
+    COUNT(*) FILTER (
+        WHERE NULLIF(TRIM(transaction_type), &#x27;&#x27;) IS NULL
+    ) AS missing_transaction_type,
+    COUNT(*) FILTER (
+        WHERE NULLIF(TRIM(customer_id), &#x27;&#x27;) IS NULL
+    ) AS missing_customer_id,
+    COUNT(*) FILTER (
+        WHERE NULLIF(TRIM(account_id), &#x27;&#x27;) IS NULL
+    ) AS missing_account_id
+FROM transactions;
+
+
+-- 2. Check duplicate transaction IDs
+
+SELECT
+    transaction_id,
+    COUNT(*) AS duplicate_count
+FROM transactions
+GROUP BY transaction_id
+HAVING COUNT(*) &gt; 1
+ORDER BY duplicate_count DESC;
+
+
+-- 3. Check transaction type formatting
+
+SELECT
+    transaction_type,
+    COUNT(*) AS total_records
+FROM transactions
+GROUP BY transaction_type
+ORDER BY transaction_type;
+
+
+-- 4. Check transaction status formatting
+
+SELECT
+    transaction_status,
+    COUNT(*) AS total_records
+FROM transactions
+GROUP BY transaction_status
+ORDER BY transaction_status;
+
+
+-- 5. Check currency formatting
+
+SELECT
+    currency,
+    COUNT(*) AS total_records
+FROM transactions
+GROUP BY currency
+ORDER BY currency;
+
+
+-- 6. Check invalid customer references
+
+SELECT
+    COUNT(*) AS invalid_customer_references
+FROM transactions t
+LEFT JOIN customers c
+    ON TRIM(t.customer_id) = TRIM(c.customer_id)
+WHERE c.customer_id IS NULL;
+
+
+-- 7. Check invalid account references
+
+SELECT
+    COUNT(*) AS invalid_account_references
+FROM transactions t
+LEFT JOIN accounts a
+    ON TRIM(t.account_id) = TRIM(a.account_id)
+WHERE a.account_id IS NULL;
+
+
+-- 8. Data quality audit summary
+
+SELECT
+    (SELECT COUNT(*) FROM transactions) AS total_transactions,
+
+    (SELECT COUNT(*) FROM transactions
+     WHERE NULLIF(TRIM(amount), &#x27;&#x27;) IS NULL) AS missing_amounts,
+
+    (SELECT COUNT(*) FROM transactions
+     WHERE NULLIF(TRIM(transaction_type), &#x27;&#x27;) IS NULL) AS missing_types,
+
+    (SELECT COUNT(*) FROM (
+         SELECT transaction_id
+         FROM transactions
+         GROUP BY transaction_id
+         HAVING COUNT(*) &gt; 1
+     ) d) AS duplicate_ids,
+
+    (SELECT COUNT(*) FROM transactions
+     WHERE transaction_type IS NOT NULL
+       AND transaction_type &lt;&gt; INITCAP(TRIM(transaction_type)))
+       AS type_format_issues,
+
+    (SELECT COUNT(*) FROM transactions
+     WHERE transaction_status IS NOT NULL
+       AND transaction_status &lt;&gt; INITCAP(TRIM(transaction_status)))
+       AS status_format_issues,
+
+    (SELECT COUNT(*) FROM transactions
+     WHERE currency IS NOT NULL
+       AND currency &lt;&gt; UPPER(TRIM(currency)))
+       AS currency_format_issues,
+
+    (SELECT COUNT(*) FROM transactions t
+     WHERE NOT EXISTS (
+         SELECT 1 FROM customers c
+         WHERE TRIM(c.customer_id) = TRIM(t.customer_id)
+     )) AS invalid_customers,
+
+    (SELECT COUNT(*) FROM transactions t
+     WHERE NOT EXISTS (
+         SELECT 1 FROM accounts a
+         WHERE TRIM(a.account_id) = TRIM(t.account_id)
+     )) AS invalid_accounts;
+</code></pre><div class="evidence"><figure><img loading="lazy" src="images/banking-dba/04_data_quality_audit.png" alt="PostgreSQL output: Data Quality Audit"><figcaption>04 data quality audit</figcaption></figure></div></div></details><details class="sql-accordion"><summary><span><strong>03 · Data Cleaning</strong><small>Preserved original transactions and standardized a separate 1,000-row working copy.</small></span><span class="chevron">⌄</span></summary><div class="accordion-body"><p>Preserved original transactions and standardized a separate 1,000-row working copy.</p><pre><code>-- Project #5: Banking Database Maintenance &amp; Data Quality
+-- Phase 3: Data Cleaning
+
+-- 1. Create a working copy
+CREATE TABLE transactions_clean AS
+SELECT *
+FROM transactions;
+
+-- 2. Verify copied records
+SELECT COUNT(*) AS total_records
+FROM transactions_clean;
+
+-- 3. Standardize transaction types
+UPDATE transactions_clean
+SET transaction_type = INITCAP(TRIM(transaction_type))
+WHERE transaction_type IS NOT NULL;
+
+-- 4. Verify cleaned transaction types
+SELECT
+    transaction_type,
+    COUNT(*) AS total_records
+FROM transactions_clean
+GROUP BY transaction_type
+ORDER BY transaction_type;
+
+-- 5. Standardize transaction statuses
+UPDATE transactions_clean
+SET transaction_status = INITCAP(TRIM(transaction_status))
+WHERE transaction_status IS NOT NULL;
+
+-- 6. Verify cleaned transaction statuses
+SELECT
+    transaction_status,
+    COUNT(*) AS total_records
+FROM transactions_clean
+GROUP BY transaction_status
+ORDER BY transaction_status;
+
+-- 7. Standardize currency codes
+UPDATE transactions_clean
+SET currency = UPPER(TRIM(currency))
+WHERE currency IS NOT NULL;
+
+-- 8. Verify cleaned currency codes
+SELECT
+    currency,
+    COUNT(*) AS total_records
+FROM transactions_clean
+GROUP BY currency
+ORDER BY currency;
+
+
+-- 9. Verify data cleaning results
+SELECT
+    &#x27;Before Cleaning&#x27; AS stage,
+    COUNT(*) FILTER (
+        WHERE transaction_type IS NOT NULL
+          AND transaction_type &lt;&gt; INITCAP(TRIM(transaction_type))
+    ) AS type_issues,
+    COUNT(*) FILTER (
+        WHERE transaction_status IS NOT NULL
+          AND transaction_status &lt;&gt; INITCAP(TRIM(transaction_status))
+    ) AS status_issues,
+    COUNT(*) FILTER (
+        WHERE currency IS NOT NULL
+          AND currency &lt;&gt; UPPER(TRIM(currency))
+    ) AS currency_issues
+FROM transactions
+
+UNION ALL
+
+SELECT
+    &#x27;After Cleaning&#x27;,
+    COUNT(*) FILTER (
+        WHERE transaction_type IS NOT NULL
+          AND transaction_type &lt;&gt; INITCAP(TRIM(transaction_type))
+    ),
+    COUNT(*) FILTER (
+        WHERE transaction_status IS NOT NULL
+          AND transaction_status &lt;&gt; INITCAP(TRIM(transaction_status))
+    ),
+    COUNT(*) FILTER (
+        WHERE currency IS NOT NULL
+          AND currency &lt;&gt; UPPER(TRIM(currency))
+    )
+FROM transactions_clean;
+</code></pre><div class="evidence"><figure><img loading="lazy" src="images/banking-dba/05_data_cleaning.png" alt="PostgreSQL output: Data Cleaning"><figcaption>05 data cleaning</figcaption></figure></div></div></details><details class="sql-accordion"><summary><span><strong>04 · Data Integrity</strong><small>Validated identifiers and added three primary keys; foreign keys remain unenforced because source references are invalid.</small></span><span class="chevron">⌄</span></summary><div class="accordion-body"><p>Validated identifiers and added three primary keys; foreign keys remain unenforced because source references are invalid.</p><pre><code>
+-- Project #5: Banking Database Maintenance &amp; Data Quality
+-- Phase 4: Data Integrity
+
+-- 1. Check customer IDs before adding a primary key
+
+SELECT
+    COUNT(*) AS total_customers,
+    COUNT(*) FILTER (
+        WHERE customer_id IS NULL
+    ) AS missing_ids,
+    COUNT(*) - COUNT(DISTINCT customer_id) AS duplicate_ids
+FROM customers;
+
+
+-- 2. Add primary key to customers table
+
+ALTER TABLE customers
+ADD CONSTRAINT pk_customers
+PRIMARY KEY (customer_id);
+
+-- 3. Verify primary key constraint
+
+SELECT
+    constraint_name,
+    constraint_type
+FROM information_schema.table_constraints
+WHERE table_name = &#x27;customers&#x27;
+  AND constraint_type = &#x27;PRIMARY KEY&#x27;;
+
+
+-- 4. Check account IDs before adding a primary key
+
+SELECT
+    COUNT(*) AS total_accounts,
+    COUNT(*) FILTER (
+        WHERE account_id IS NULL
+           OR TRIM(account_id) = &#x27;&#x27;
+    ) AS missing_ids,
+    COUNT(*) - COUNT(DISTINCT account_id) AS duplicate_ids
+FROM accounts;
+
+
+-- 5. Add primary key to accounts table
+
+ALTER TABLE accounts
+ADD CONSTRAINT pk_accounts
+PRIMARY KEY (account_id);
+
+-- 6. Verify account primary key
+
+SELECT
+    constraint_name,
+    constraint_type
+FROM information_schema.table_constraints
+WHERE table_name = &#x27;accounts&#x27;
+  AND constraint_type = &#x27;PRIMARY KEY&#x27;;
+
+
+-- 7. Validate transaction IDs before adding a primary key
+
+SELECT
+    COUNT(*) AS total_transactions,
+    COUNT(*) FILTER (
+        WHERE transaction_id IS NULL
+           OR TRIM(transaction_id) = &#x27;&#x27;
+    ) AS missing_ids,
+    COUNT(*) - COUNT(DISTINCT transaction_id) AS duplicate_ids
+FROM transactions_clean;
+
+
+-- 8. Add primary key to cleaned transactions
+
+ALTER TABLE transactions_clean
+ADD CONSTRAINT pk_transactions_clean
+PRIMARY KEY (transaction_id);
+
+-- 9. Verify transaction primary key
+
+SELECT
+    constraint_name,
+    constraint_type
+FROM information_schema.table_constraints
+WHERE table_name = &#x27;transactions_clean&#x27;
+  AND constraint_type = &#x27;PRIMARY KEY&#x27;;
+
+
+-- 10. Verify invalid foreign key references
+
+SELECT
+    COUNT(*) FILTER (
+        WHERE NOT EXISTS (
+            SELECT 1
+            FROM customers c
+            WHERE TRIM(c.customer_id) = TRIM(t.customer_id)
+        )
+    ) AS invalid_customer_references,
+
+    COUNT(*) FILTER (
+        WHERE NOT EXISTS (
+            SELECT 1
+            FROM accounts a
+            WHERE TRIM(a.account_id) = TRIM(t.account_id)
+        )
+    ) AS invalid_account_references
+
+FROM transactions_clean t;
+
+
+-- 11. Verify all primary key constraints
+
+SELECT
+    table_name,
+    constraint_name,
+    constraint_type
+FROM information_schema.table_constraints
+WHERE table_schema = &#x27;public&#x27;
+  AND table_name IN (
+      &#x27;customers&#x27;,
+      &#x27;accounts&#x27;,
+      &#x27;transactions_clean&#x27;
+  )
+  AND constraint_type = &#x27;PRIMARY KEY&#x27;
+ORDER BY table_name;
+</code></pre><div class="evidence"><figure><img loading="lazy" src="images/banking-dba/06_data_integrity.png" alt="PostgreSQL output: Data Integrity"><figcaption>06 data integrity</figcaption></figure></div></div></details><details class="sql-accordion"><summary><span><strong>05 · Database Maintenance</strong><small>Created a customer ID index, ran VACUUM ANALYZE, and reviewed maintenance statistics.</small></span><span class="chevron">⌄</span></summary><div class="accordion-body"><p>Created a customer ID index, ran VACUUM ANALYZE, and reviewed maintenance statistics.</p><pre><code>
+-- Project #5: Banking Database Maintenance &amp; Data Quality
+-- Phase 5: Database Maintenance
+
+-- 1. Create index on customer_id for transaction lookups
+
+CREATE INDEX idx_transactions_customer_id
+ON transactions_clean (customer_id);
+
+-- 2. Verify index creation
+
+SELECT
+    indexname,
+    tablename,
+    indexdef
+FROM pg_indexes
+WHERE schemaname = &#x27;public&#x27;
+  AND indexname = &#x27;idx_transactions_customer_id&#x27;;
+
+
+-- 3. Perform database maintenance
+
+VACUUM (VERBOSE, ANALYZE) transactions_clean;
+
+
+-- 4. Verify database maintenance statistics
+
+SELECT
+    relname AS table_name,
+    n_live_tup AS estimated_live_rows,
+    n_dead_tup AS estimated_dead_rows,
+    last_vacuum,
+    last_analyze
+FROM pg_stat_user_tables
+WHERE relname = &#x27;transactions_clean&#x27;;
+</code></pre><div class="evidence"><figure><img loading="lazy" src="images/banking-dba/07_database_maintenance.png" alt="PostgreSQL output: Database Maintenance"><figcaption>07 database maintenance</figcaption></figure></div></div></details><details class="sql-accordion"><summary><span><strong>06 · Backup &amp; Recovery</strong><small>Created a custom-format backup and verified restoration in a separate database.</small></span><span class="chevron">⌄</span></summary><div class="accordion-body"><p>Used <code>pg_dump</code> to back up the source database and <code>pg_restore</code> to restore into <code>banking_dba_restore_test</code>. Confirmed row counts of 200 customers, 300 accounts, 1,000 original transactions, and 1,000 cleaned transactions. Backup archives are intentionally excluded from GitHub.</p><pre><code>pg_dump -U biencarlovilla -d banking_dba_project -F c -f backup/banking_dba_project.backup
+createdb -U biencarlovilla banking_dba_restore_test
+pg_restore -U biencarlovilla -d banking_dba_restore_test --exit-on-error --verbose backup/banking_dba_project.backup</code></pre><div class="evidence"><figure><img loading="lazy" src="images/banking-dba/08_backup_recovery.png" alt="Successful PostgreSQL backup and restore verification"><figcaption>08 · Backup recovery verification</figcaption></figure></div></div></details></section><section class="case-section"><h2>Data Quality Findings</h2><ul><li>29 missing transaction amounts and 188 missing transaction types remained unresolved rather than invented.</li><li>178 transaction-type, 258 status, and 239 currency formatting issues were standardized (675 field-level issues total).</li><li>8 invalid customer references and 2 invalid account references were documented; foreign key constraints were not applied.</li><li>No duplicate transaction IDs were detected.</li></ul></section><section class="case-section"><h2>Maintenance &amp; Recovery</h2><p>Added a B-tree index on the cleaned transactions customer ID, ran VACUUM with ANALYZE, and verified the restored table counts. This demonstrates the workflow, not a measured performance gain or complete row-by-row restore comparison.</p></section><section class="case-section"><h2>Dataset &amp; Source</h2><p>Original data: <a href="https://github.com/prasankumar/DataSets/blob/main/Banking_Messy_Dataset.zip" target="_blank" rel="noopener noreferrer">Banking Messy Dataset</a>. This project uses the customer, account, and transaction CSV files.</p></section><a class="case-link" href="https://github.com/biencarlovilla/Banking-Database-Maintenance" target="_blank" rel="noopener noreferrer">View GitHub Repository ↗</a><a class="case-link secondary" href="projects.html">All Projects</a></div></main><footer><p>&copy; <span id="current-year"></span> Biencarlo Villa</p></footer><script src="script.js"></script></body></html>
