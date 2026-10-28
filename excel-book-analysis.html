@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Book Data Cleaning &amp; Analysis | Biencarlo Villa</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .excel-case {
+            background: #101827;
+            color: #f1f5f9;
+            padding: 55px 7% 90px;
+            min-height: 75vh
+        }
+
+        .excel-wrap {
+            max-width: 1100px;
+            margin: auto
+        }
+
+        .excel-case a {
+            color: #93c5fd
+        }
+
+        .excel-label {
+            color: #93c5fd;
+            letter-spacing: 2px;
+            font-size: 12px;
+            margin: 35px 0 12px
+        }
+
+        .excel-case h1 {
+            font-size: clamp(32px, 5vw, 54px);
+            line-height: 1.12;
+            margin: 0 0 18px
+        }
+
+        .excel-lead,
+        .excel-case p {
+            color: #cbd5e1;
+            line-height: 1.8
+        }
+
+        .excel-tags {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin: 25px 0
+        }
+
+        .excel-tags span {
+            background: #23334a;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px
+        }
+
+        .excel-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 28px 0 46px
+        }
+
+        .excel-metrics div {
+            background: #1e293b;
+            border-radius: 9px;
+            padding: 20px
+        }
+
+        .excel-metrics strong {
+            display: block;
+            font-size: 25px
+        }
+
+        .excel-metrics small {
+            color: #94a3b8
+        }
+
+        .excel-case section {
+            margin: 42px 0
+        }
+
+        .excel-case h2 {
+            font-size: 26px;
+            margin-bottom: 15px
+        }
+
+        .excel-case ul {
+            padding-left: 22px;
+            color: #cbd5e1;
+            line-height: 2
+        }
+
+        .excel-preview {
+            margin: 20px 0;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            overflow: hidden
+        }
+
+        .excel-preview img {
+            display: block;
+            width: 100%;
+            height: auto
+        }
+
+        .excel-preview figcaption {
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #cbd5e1
+        }
+
+        .excel-table {
+            width: 100%;
+            border-collapse: collapse;
+            max-width: 680px
+        }
+
+        .excel-table th,
+        .excel-table td {
+            border-bottom: 1px solid #334155;
+            text-align: left;
+            padding: 12px
+        }
+
+        .excel-table th {
+            color: #93c5fd
+        }
+
+        .excel-note {
+            font-size: 13px
+        }
+
+        .excel-button {
+            display: inline-block;
+            background: #2563eb;
+            color: #fff !important;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px
+        }
+
+        @media(max-width:650px) {
+            .excel-case {
+                padding: 40px 5% 65px
+            }
+
+            .excel-metrics {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        /* Expandable walkthrough, styled to match Retail Sales Analysis */
+        .excel-accordion { background:#1e293b; border:1px solid #334155; border-radius:10px; margin:12px 0; overflow:hidden; }
+        .excel-accordion summary { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:23px; cursor:pointer; list-style:none; }
+        .excel-accordion summary::-webkit-details-marker { display:none; }
+        .excel-accordion summary strong { display:block; font-size:20px; font-weight:500; color:#f1f5f9; }
+        .excel-accordion summary small { display:block; margin-top:9px; font-size:14px; color:#94a3b8; line-height:1.5; }
+        .excel-chevron { color:#cbd5e1; font-size:24px; transition:transform .2s; }
+        .excel-accordion[open] .excel-chevron { transform:rotate(180deg); }
+        .excel-detail { background:#111b2b; border-top:1px solid #334155; padding:24px; }
+        .excel-detail p { margin:0 0 20px; }
+        .excel-accordion summary:focus-visible { outline:2px solid #93c5fd; outline-offset:-4px; }
+        @media(max-width:650px) { .excel-accordion summary { padding:18px; } .excel-detail { padding:14px; } }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav><a href="index.html" class="logo">BV.</a>
+            <div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a
+                    href="projects.html">Projects</a><a href="contact.html">Contact</a></div>
+        </nav>
+    </header>
+    <main class="excel-case">
+        <div class="excel-wrap"><a href="projects.html">← Back to Projects</a>
+            <p class="excel-label">DATA ANALYSIS &amp; BUSINESS INTELLIGENCE · PROJECT 08</p>
+            <h1>Excel Book Data Cleaning &amp; Analysis</h1>
+            <p class="excel-lead">An end-to-end Microsoft Excel exercise covering data quality, lookups, PivotTables,
+                and visual reporting using an Amazon bestselling books dataset.</p>
+            <div class="excel-tags"><span>Microsoft Excel</span><span>Data
+                    Cleaning</span><span>VLOOKUP</span><span>PivotTables</span><span>Charts</span></div>
+            <div class="excel-metrics">
+                <div><strong>600</strong><small>Practice records before cleanup</small></div>
+                <div><strong>575</strong><small>Records after exact deduplication</small></div>
+                <div><strong>25</strong><small>Exact duplicates removed</small></div>
+                <div><strong>13</strong><small>Zero-price records flagged</small></div>
+            </div>
+            <section>
+                <h2>Project Overview</h2>
+                <p>I used an Amazon bestselling books dataset containing 550 original records and added 50 simulated
+                    records with intentional data quality issues for practice. I cleaned and validated the data in
+                    Excel, removed exact duplicates, standardized text and prices, and kept questionable zero-price
+                    values flagged for review. The finished dataset supports simple lookup, PivotTable, and dashboard
+                    exercises.</p>
+                <p class="excel-note">The additional 50 records and their quality issues were simulated for learning
+                    purposes; they are not additional real Amazon bestseller observations.</p>
+            </section>
+            <section class="excel-walkthrough"><h2>Excel Analysis Walkthrough</h2><p>Explore the actual Excel workflow. Click a section to view screenshots and a brief explanation.</p>
+              <details class="excel-accordion"><summary><span><strong>01 / Raw Data &amp; Preparation</strong><small>Review the source dataset and the intentionally messy practice data.</small></span><span class="excel-chevron" aria-hidden="true">⌄</span></summary><div class="excel-detail"><p>Review the source dataset and the intentionally messy practice data.</p>
+                <figure class="excel-preview"><img src="images/excel/01-raw-dataset.png" alt="Original book dataset" loading="lazy"><figcaption>Original book dataset</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/02-messy-dataset.png" alt="Messy practice dataset" loading="lazy"><figcaption>Messy practice dataset</figcaption></figure>
+              </div></details>
+              <details class="excel-accordion"><summary><span><strong>02 / Missing Values &amp; Duplicates</strong><small>Check missing fields and remove exact duplicate records.</small></span><span class="excel-chevron" aria-hidden="true">⌄</span></summary><div class="excel-detail"><p>Check missing fields and remove exact duplicate records.</p>
+                <figure class="excel-preview"><img src="images/excel/03-missing-values-before.png" alt="Missing values before cleaning" loading="lazy"><figcaption>Missing values before cleaning</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/04-missing-values-after.png" alt="Missing values after cleaning" loading="lazy"><figcaption>Missing values after cleaning</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/05-duplicates-removed.png" alt="Duplicate records removed" loading="lazy"><figcaption>Duplicate records removed</figcaption></figure>
+              </div></details>
+              <details class="excel-accordion"><summary><span><strong>03 / Text Standardization</strong><small>Clean author names and genre labels with Excel formulas.</small></span><span class="excel-chevron" aria-hidden="true">⌄</span></summary><div class="excel-detail"><p>Clean author names and genre labels with Excel formulas.</p>
+                <figure class="excel-preview"><img src="images/excel/06-trim-formula.png" alt="TRIM formula" loading="lazy"><figcaption>TRIM formula</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/07-trim-verified.png" alt="TRIM verification" loading="lazy"><figcaption>TRIM verification</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/08-author-cleaning.png" alt="Author cleanup" loading="lazy"><figcaption>Author cleanup</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/09-author-cleaning-verified.png" alt="Author cleanup verified" loading="lazy"><figcaption>Author cleanup verified</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/10-genre-standardization.png" alt="Genre standardization" loading="lazy"><figcaption>Genre standardization</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/11-genre-cleaning-verified.png" alt="Genre cleanup verified" loading="lazy"><figcaption>Genre cleanup verified</figcaption></figure>
+              </div></details>
+              <details class="excel-accordion"><summary><span><strong>04 / Rating Validation</strong><small>Identify and correct invalid user ratings in the practice data.</small></span><span class="excel-chevron" aria-hidden="true">⌄</span></summary><div class="excel-detail"><p>Identify and correct invalid user ratings in the practice data.</p>
+                <figure class="excel-preview"><img src="images/excel/12-invalid-ratings-before.png" alt="Invalid ratings before cleaning" loading="lazy"><figcaption>Invalid ratings before cleaning</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/13-invalid-ratings-highlighted.png" alt="Invalid ratings highlighted" loading="lazy"><figcaption>Invalid ratings highlighted</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/14-invalid-ratings-corrected.png" alt="Rating corrections completed" loading="lazy"><figcaption>Rating corrections completed</figcaption></figure>
+              </div></details>
+              <details class="excel-accordion"><summary><span><strong>05 / Price Cleaning</strong><small>Identify negative and currency-formatted prices, then validate the results.</small></span><span class="excel-chevron" aria-hidden="true">⌄</span></summary><div class="excel-detail"><p>Identify negative and currency-formatted prices, then validate the results.</p>
+                <figure class="excel-preview"><img src="images/excel/15-negative-prices-before.png" alt="Negative prices before cleaning" loading="lazy"><figcaption>Negative prices before cleaning</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/16-negative-prices-highlighted.png" alt="Negative prices highlighted" loading="lazy"><figcaption>Negative prices highlighted</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/17-negative-prices-corrected.png" alt="Negative prices corrected" loading="lazy"><figcaption>Negative prices corrected</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/18-usd-prices-before.png" alt="USD-formatted prices before conversion" loading="lazy"><figcaption>USD-formatted prices before conversion</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/19-usd-prices-highlighted.png" alt="USD-formatted prices highlighted" loading="lazy"><figcaption>USD-formatted prices highlighted</figcaption></figure>
+              </div></details>
+              <details class="excel-accordion"><summary><span><strong>06 / Data Quality Checks</strong><small>Count invalid prices, flag records for review, and verify the final dataset.</small></span><span class="excel-chevron" aria-hidden="true">⌄</span></summary><div class="excel-detail"><p>Count invalid prices, flag records for review, and verify the final dataset.</p>
+                <figure class="excel-preview"><img src="images/excel/20-usd-price-conversion-formula.png" alt="USD price conversion formula" loading="lazy"><figcaption>USD price conversion formula</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/21-invalid-price-count.png" alt="Invalid price count" loading="lazy"><figcaption>Invalid price count</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/22-invalid-price-record.png" alt="Invalid price records" loading="lazy"><figcaption>Invalid price records</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/23-price-status-review.png" alt="Price status review" loading="lazy"><figcaption>Price status review</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/24-final-record-count.png" alt="Final record count" loading="lazy"><figcaption>Final record count</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/25-missing-data-verification.png" alt="Missing data verification" loading="lazy"><figcaption>Missing data verification</figcaption></figure>
+              </div></details>
+              <details class="excel-accordion"><summary><span><strong>07 / VLOOKUP</strong><small>Use an exact-match VLOOKUP formula to retrieve a book price.</small></span><span class="excel-chevron" aria-hidden="true">⌄</span></summary><div class="excel-detail"><p>Use an exact-match VLOOKUP formula to retrieve a book price.</p>
+                <figure class="excel-preview"><img src="images/excel/26-vlookup-book-price.png" alt="VLOOKUP book price" loading="lazy"><figcaption>VLOOKUP book price</figcaption></figure>
+              </div></details>
+              <details class="excel-accordion"><summary><span><strong>08 / PivotTables &amp; Charts</strong><small>Summarize book counts and average prices by genre.</small></span><span class="excel-chevron" aria-hidden="true">⌄</span></summary><div class="excel-detail"><p>Summarize book counts and average prices by genre.</p>
+                <figure class="excel-preview"><img src="images/excel/27-pivot-books-by-genre.png" alt="PivotTable: books by genre" loading="lazy"><figcaption>PivotTable: books by genre</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/28-pivot-average-price.png" alt="PivotTable: average price" loading="lazy"><figcaption>PivotTable: average price</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/29-average-price-chart.png" alt="Average price chart" loading="lazy"><figcaption>Average price chart</figcaption></figure>
+                <figure class="excel-preview"><img src="images/excel/30-book-distribution-chart.png" alt="Book distribution chart" loading="lazy"><figcaption>Book distribution chart</figcaption></figure>
+              </div></details>
+              <details class="excel-accordion"><summary><span><strong>09 / Final Dashboard</strong><small>Present cleaned-data metrics and genre comparisons.</small></span><span class="excel-chevron" aria-hidden="true">⌄</span></summary><div class="excel-detail"><p>Present cleaned-data metrics and genre comparisons.</p>
+                <figure class="excel-preview"><img src="images/excel/31-final-dashboard.png" alt="Final Excel dashboard" loading="lazy"><figcaption>Final Excel dashboard</figcaption></figure>
+              </div></details>
+            </section>
+
+            <section><h2>Dashboard Design Concept</h2><p>An illustrative design concept for presenting the analysis. The actual Excel dashboard is shown in the walkthrough above.</p><figure class="excel-preview"><img src="images/excel/dashboard-concept.png" alt="Illustrative dashboard design concept" loading="lazy"><figcaption>Illustrative mockup, not a screenshot from the Excel workbook.</figcaption></figure></section>
+            <section>
+                <h2>Genre Analysis</h2>
+                <table class="excel-table">
+                    <thead>
+                        <tr>
+                            <th>Genre</th>
+                            <th>Book Records</th>
+                            <th>Average Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Fiction</td>
+                            <td>247</td>
+                            <td>$10.82</td>
+                        </tr>
+                        <tr>
+                            <td>Non Fiction</td>
+                            <td>328</td>
+                            <td>$14.74</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Overall</strong></td>
+                            <td><strong>575</strong></td>
+                            <td><strong>$13.06</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="excel-note">Counts reflect book-year records, not necessarily unique book titles. Thirteen
+                    zero-price records remain flagged for review.</p>
+            </section>
+            <section><a class="excel-button" href="projects.html">Back to Projects</a></section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; <span id="current-year"></span> Biencarlo Villa</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
