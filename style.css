@@ -1102,6 +1102,7 @@ html {
 /* Technology logos with names beneath */
 .skills-logos {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 28px;
@@ -1133,6 +1134,7 @@ html {
 /* Skill tags below the logos */
 .skill-tags {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 8px;
     border-top: 1px solid #eee;
