@@ -456,7 +456,7 @@ main {
 .award-card a {
     font-size: 14px;
     color: #000000;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .education-status {
@@ -1213,4 +1213,31 @@ html {
     border-top: none;
     padding-top: 25px;
     scroll-margin-top: 0;
+}
+
+/* Education, Awards & Technical Skills Hover Effect */
+
+.skills-group,
+.education-card,
+.award-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-group:hover,
+.education-card:hover,
+.award-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+}
+
+/* Education & Awards Description Styling */
+
+#education .section-description,
+#awards .section-description {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 30px;
 }
